@@ -1,7 +1,7 @@
 //
 
 function rps(userWins, compWins) {
-  for (var i = 0; i < 5; i++) {
+  for (var i = 0; i < 100; i++) {
     var uWins = userWins;
     var cWins = compWins;
     var userChoice = prompt("Please pick your weapon: rock, paper or scissors?");
@@ -20,25 +20,29 @@ function rps(userWins, compWins) {
     }
 
     if ((userChoice == "rock" && compChoice == "rock") || (userChoice == "paper" && compChoice == "paper") || (userChoice == "scissors" && compChoice == "scissors")) {
-        alert("Draw!");
+        alert("Draw! No score.");
         alert("The score is: User - " + userWins.length + " vs. Computer - " + compWins.length);
     }
-    if ((userChoice == "rock" && compChoice == "scissors") || (userChoice == "paper" && compChoice == "rock") || (userChoice == "scissors" && compChoice == "paper")) {
+    else if ((userChoice == "rock" && compChoice == "scissors") || (userChoice == "paper" && compChoice == "rock") || (userChoice == "scissors" && compChoice == "paper")) {
         alert("You won!");
-          for (var i = 0; i < 2; i++) {
-            uWins[i]++;
-          }
+            uWins.length++;
         alert("The score is: User - " + userWins.length + " vs. Computer - " + compWins.length);
     }
-    if ((userChoice == "rock" && compChoice == "paper") || (userChoice == "paper" && compChoice == "scissors") || (userChoice == "scissors" && compChoice == "rock")) {
+    else if ((userChoice == "rock" && compChoice == "paper") || (userChoice == "paper" && compChoice == "scissors") || (userChoice == "scissors" && compChoice == "rock")) {
         alert("You lost!");
-        for (var i = 0; i < 2; i++) {
-          cWins[i]++;
-        }
+        cWins.length++;
         alert("The score is: User - " + userWins.length + " vs. Computer - " + compWins.length);
+    }
+
+    if (userWins.length > 2) {
+      alert ("Congratulations, you won! Final score: User - " + userWins.length + " vs. Computer - " + compWins.length);
+      break;
+    }
+    if (compWins.length > 2) {
+      alert ("Awww, you suck! Final score: User - " + userWins.length + " vs. Computer - " + compWins.length);
+      break;
     }
   }
-  return ("Final score: User - " + userWins.length + " vs. Computer - " + compWins.length);
 }
 
 var userWins = [];
